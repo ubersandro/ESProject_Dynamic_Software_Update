@@ -15,6 +15,4 @@ possible 2nd version: one library for the loop, another for the code of the call
 
 
 ## PROBLEMS 
-- I have to be able to redefine the state structure 
-    tmp wa: work with non mutable state 
 - I have to make application specific routines independent of the particular struct definition 

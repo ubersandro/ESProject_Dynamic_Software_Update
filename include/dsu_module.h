@@ -5,10 +5,9 @@
 */
 
 /**
- * Check current folder for available updates.
- * This is my STOPPING POINT FUNCTION.
-*/
-int update_available(); 
+ * - set HALT_FLAG to 1 in shared lib (this will block loop)  
+ */
+void update_available(); 
 
 /**
  * This function

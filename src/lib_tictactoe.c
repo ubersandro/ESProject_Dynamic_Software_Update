@@ -2,26 +2,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+/**
+ * DSU-related structures
+ * They are on the compiler, I am integrating them here just to have an idea of how to realize DSU.
+*/
+int HALT_FLAG; 
+int UPDATE_READY; // this flag is one is the loop is stopped to prepare for an update 
+#define STOPPING_POINT if(HALT_FLAG) UPDATE_READY = 1; break; 
 
 struct board
 {
     unsigned short int size;        
     unsigned short int player_turn; 
     unsigned short int game_over;
-    unsigned short int update_ready;
     int board[3][3];
 };
 
 typedef struct board *board;
 board b;
 
-void game()
+void loop()
 {
     while (!b->game_over)
     {
         print_board(b);
+        STOPPING_POINT // they will be defined by the compiler
         move(b);
-        stopping_point(b);
+        STOPPING_POINT // and not by hand 
     }
 }
 
