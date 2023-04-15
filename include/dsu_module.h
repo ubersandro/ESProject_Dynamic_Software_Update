@@ -1,17 +1,23 @@
 /**
- * This function changes the state after an update in such a way that consistency is granted. 
+ * This module is in charge of
+ * 1) detecting available updates 
+ * 2) applying updates according to a special state changing function provided together with the update
 */
-void * state_change(void * old_state); 
 
 /**
- * Program memory might be dumped to a file in order to stay safe. 
+ * Check current folder for available updates.
+ * This is my STOPPING POINT FUNCTION.
 */
-void backup(); 
+int update_available(); 
 
 /**
- * After a failure, restore the old code. How can a failure be checked? 
+ * This function
+ * - closes the old handle 
+ * - backs up the old handle
+ * - replaces the old handle with the new 
+ * - opens the NEW handle
+ * - picks update provider defined state transformation function and applies it
+ * After this chain of operations main loop execution goes on as usual. 
+ * Returns 0 on success, nonzero values otherwise.
 */
-void restore(); 
-
-
-
+int apply_update(); 
