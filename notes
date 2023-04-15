@@ -1,9 +1,0 @@
-1) sp identification -> manually using experience
-    Assuming the app is a big loop and that there are no global variables. 
-2) update type: instantaneous, which requires blocking ...  
-3) state transformation functions behavior fixed a priori, defined by the user (safety responsibility on the user!)
-
-?) global structure with pointers to routines which can be updated -> how can dynamic change be implemented? 
-?) statically linked program -> like they say in DSU 
-
-

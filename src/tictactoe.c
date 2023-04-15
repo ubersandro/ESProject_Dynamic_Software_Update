@@ -2,17 +2,10 @@
 #include "tictactoe.h"
 #include <stdlib.h> 
 
-#define stopping_point(b) if(b->update_ready){ update(b); printf("update applied!");}
-/**
- * What I thought of is a peculiar version of tic tac toe in which rules might dynamically change. 
- * Example: 
- *  when we start a player with three syms in a row wins 
- *  it may change to 'the player with three syms in a row loses'. 
- * Another example: 
- *  printing style may dynamically change.  
- * Another example: 
- *  the board may be randomly scrambled. 
-*/
+#define stopping_point(b) \
+    if(b->update_ready)\
+        { update(b);\
+         printf("update applied!");}
 
 int main(int argc, const char * argv[]){
     printf("Welcome to TIC TAC TOE!\n");
