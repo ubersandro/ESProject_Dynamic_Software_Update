@@ -1,3 +1,4 @@
 bin/
 papers/ 
 lib/
+src/**/*.so
