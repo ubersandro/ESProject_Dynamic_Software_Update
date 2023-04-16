@@ -3,17 +3,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-/**
- * DSU-related structures
- * They are on the compiler, I am integrating them here just to have an idea of how to realize DSU.
-*/
-int HALT_FLAG; 
-int UPDATE_READY; // this flag is one is the loop is stopped to prepare for an update 
-#define STOPPING_POINT if(HALT_FLAG) { UPDATE_READY = 1; printf("LIB> preparing for update\n"); break; } 
-/**END DSU STRUCTURES */
-
-
-
 struct board
 {
     unsigned short int size;        
@@ -23,13 +12,10 @@ struct board
 }x; //{3,0,0,{{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}}};
 
 typedef struct board *board;
-board b = &x; //CHECK INITIALIZATION, HOW TO DO IT PROPERLY
-//PROBLEM -> STATE CANNOT BE ACCESSED FROM THE OUTSIDE 
+board b = &x; 
 
 void loop()
 {
-
-    printf("LIB> starting the app\n"); 
     while (!b->game_over)
     {
         print_board(b);
@@ -51,9 +37,8 @@ void init()
     HALT_FLAG=0; 
 }
 
-void destroy(){
-    //free(b); 
-}
+
+void destroy(){}
 
 void move()
 {
@@ -115,17 +100,16 @@ void print_board()
             switch (b->board[r][c])
             {
             case 0:
-                printf("O\t|");
+                printf("O\t|||");
                 break;
             case -1:
-                printf(" \t|");
+                printf(" \t|||");
                 break;
             default:
-                printf("X\t|");
+                printf("X\t|||");
             }
         }
         puts("\n");
-        // puts("\n\t|\t|\t|");
     }
 }
 

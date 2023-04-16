@@ -15,7 +15,7 @@ int main(int argc, const char * argv[]){
     sigaction(SIGUSR1, &s, &t); 
     printf("installing update signal handler. Send signal %d to process %d to trigger update.\n", SIGUSR1, getpid()); 
 
-    // open shared library (initial version), retrieve syms and init 
+    // open shared library (initial version) and init 
     handle = dlopen("./lib/init.so", RTLD_LOCAL|RTLD_NOW);
     void (* init)() = dlsym(handle, "init"); 
     (*init)(); 
@@ -34,13 +34,11 @@ int main(int argc, const char * argv[]){
                 printf("MAIN> update applied\n"); 
         }
 
-        // else { /*TODO: handle game over case*/ 
-        //     printf("DONE\n");
-        //     // terminating execution, be sure everything is dealloc 
-        //     void (* destroy)() = dlsym(handle, "destroy"); 
-        //     (*destroy)(); 
-        //     break;    
-        // }
+        else { // we exited the loop and no update is ready: GAME OVER
+            void (* destroy)() = dlsym(handle, "destroy"); 
+            (*destroy)(); 
+            break;    
+        }
     }//while 
 
 }
