@@ -20,7 +20,7 @@ struct board
     unsigned short int player_turn; 
     unsigned short int game_over;
     int board[3][3];
-}x={3,0,0,{{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}}};
+}x; //{3,0,0,{{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}}};
 
 typedef struct board *board;
 board b = &x; //CHECK INITIALIZATION, HOW TO DO IT PROPERLY
@@ -28,6 +28,8 @@ board b = &x; //CHECK INITIALIZATION, HOW TO DO IT PROPERLY
 
 void loop()
 {
+
+    printf("LIB> starting the app\n"); 
     while (!b->game_over)
     {
         print_board(b);
@@ -38,14 +40,13 @@ void loop()
 }
 
 void init()
-{
-    // b = malloc(sizeof(struct board)); 
-    // b->size = 3;
-    // b->player_turn = 0; // floor(rand() / RAND_MAX) > 0.5;
-    // b->game_over=0; 
-    // for(int i=0; i<b->size; i++)
-    //     for(int j=0; j<b->size; j++)
-    //         b->board[i][j] = -1; 
+{   
+    b->size = 3;
+    b->player_turn = 0;
+    b->game_over=0; 
+    for(int i=0; i<b->size; i++)
+        for(int j=0; j<b->size; j++)
+            b->board[i][j] = -1; 
     UPDATE_READY=0; // conveniency
     HALT_FLAG=0; 
 }
