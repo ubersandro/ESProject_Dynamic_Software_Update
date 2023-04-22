@@ -12,7 +12,7 @@ int main(int argc, const char * argv[]){
     struct sigaction t = {0}; 
     struct sigaction s = {0}; 
     s.sa_handler = &update_available; 
-    sigaction(SIGUSR1, &s, &t); 
+    sigaction(SIGUSR1, &s, &t); // sig 10 
     printf("installing update signal handler. Send signal %d to process %d to trigger update.\n", SIGUSR1, getpid()); 
 
     // open shared library (initial version) and init 

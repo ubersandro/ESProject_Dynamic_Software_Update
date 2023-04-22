@@ -25,7 +25,7 @@ void state_change_transformation(void * old_handle, void * new_handle){
     board old = dlsym(old_handle, "x"); 
 
     //void (* init)() = dlsym(new_handle, "init"); 
-    //(*init)(); //alloc new struct 
+    //(*init)(); //alloc new struct         
     board new = dlsym(new_handle, "x"); 
     printf("Copying OLD %p into NEW %p\n", old, new); 
     memcpy(new, old, sizeof(struct board)); 
