@@ -43,3 +43,8 @@ author of the update is in charge of writing a suitable update handler every tim
 If the update is successfully applied, control is given back to the main which resolves the new loop()
 symbol and restarts the application.
 
+## Testing
+Just build using 
+```
+make .
+```
