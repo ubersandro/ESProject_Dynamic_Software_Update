@@ -49,9 +49,9 @@ Just build using
 make .
 ```
 After that, run 
-`./bin/main`
+```./bin/main```
 in the root folder. 
 In order to simulate the "update available" event, send the UNIX signal SIGUSR1 (code `10`) to the previously spwaned process. Its PID is printed at program start on the console. This command can be used to send such a signal 
-`kill -10 PROCESS_PID`. 
+```kill -10 PROCESS_PID```
 Beware: signal handling works in such a way that, if a signal is received while waiting for I/O, the I/O event is interrupted for signal handling. 
 This means that, if a signal is received while the game loop is running with application waiting for the move position to be entered (see lib_tictactoe.c::move()) the scanf I/O event will fail. In such a case, just insert the row/column parameters for the move to be performed once again and everything will run smoothly. 
